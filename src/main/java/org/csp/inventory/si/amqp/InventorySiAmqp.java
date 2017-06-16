@@ -17,7 +17,6 @@ public class InventorySiAmqp {
     public IntegrationFlow amqpOutbound(AmqpTemplate amqpTemplate) {
         return IntegrationFlows.from(amqpOutboundChannel())
                 .handle(Amqp.outboundAdapter(amqpTemplate).routingKey("foo")).get();
-        
     }
 
 	@Bean
@@ -26,7 +25,7 @@ public class InventorySiAmqp {
 	}
 
 	@MessagingGateway(defaultRequestChannel = "amqpOutboundChannel")
-	public interface MyGateway {
+	public interface ManageSupply {
 		void addSupply(String data);
 	}
 
