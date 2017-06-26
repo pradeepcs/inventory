@@ -15,7 +15,10 @@ public class SupplyManager {
 	
 	@RequestMapping(consumes = MediaType.APPLICATION_JSON_VALUE, method = RequestMethod.POST)
 	public void addSupply(@RequestBody Stock stock) {
-		Application.context.getBean(ManageSupply.class).addSupply("foo-csp");
+		ManageSupply manageSupply = Application.context.getBean(ManageSupply.class);
+		for (int i = 0; i < Integer.parseInt(stock.qty); i++) {
+			manageSupply.addSupply("csp");
+		}
 	}
 	
 }
